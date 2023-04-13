@@ -35,19 +35,21 @@ void loop () {
   menit   = now.minute(), DEC;
   detik   = now.second(), DEC;
 
-  Serial.println(String() + hari + ", " + tanggal + "-" + bulan + "-" + tahun);
-  Serial.println(String() + jam + ":" + menit + ":" + detik);
-  Serial.println();
+//  Serial.println(String() + hari + ", " + tanggal + "-" + bulan + "-" + tahun);
+//  Serial.println(String() + jam + ":" + menit + ":" + detik);
+//  Serial.println();
 
-   if(jam == 13 && menit == 31 && detik == 10) {
+//  modulPakan();
+
+  if(jam == 13 && menit == 49 && detik == 10) {
     modulPakan(); 
   }
 
-  if(jam == 13 && menit == 31 && detik == 30) {
+  if(jam == 13 && menit == 49 && detik == 30) {
     modulPakan(); 
   }
 
-  if(jam == 13 && menit == 31 && detik == 50) {
+  if(jam == 13 && menit == 49 && detik == 50) {
     modulPakan(); 
   }
 
