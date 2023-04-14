@@ -59,11 +59,11 @@ void loop() {
 
     //  kelembaban di bawah standar minimum
     } else if (kelembaban > 29 && kelembaban > 30 && kelembaban > 31) {
-    //    harus ngapain brou?
+    //    TODO: harus ngapain brou?
         
     //  kelembaban atas standar maksimal
     } else if (kelembaban > 29 && kelembaban > 30 && kelembaban > 31) {
-    //    harus ngapain brou?
+    //    TODO: harus ngapain brou?
     }
 }
 
@@ -93,20 +93,20 @@ void matikanModulPenurunanSuhu() {
 
 void modulPeningkatanKelembaban() {
     //meningkatkan kelembaban kandang ketika kelembaban di bawah normal dengan 
-    
+    // TODO: harus ngapain brou?
 }
 
 void matikanModulPeningkatanKelembaban() {
     //mematikan modul peningkatan kelembaban ketika kelembaban normal tercapai dengan 
-    
+    // TODO: harus ngapain brou?
 }
 
 void modulPenurunanKelembaban() {
     //menurunkan kelembaban kandang ketika kelembaban di atas normal dengan 
-    
+    // TODO: harus ngapain brou?
 }
 
 void matikanModulPenurunanKelembaban() {
     //mematikan modul penurunan kelembaban ketika kelembaban normal tercapai dengan 
-    
+    // TODO: harus ngapain brou?
 }
