@@ -53,17 +53,17 @@ void loop() {
         modulPenurunanSuhu();
 
     //  kelembaban normal
-    } else if (kelembaban > 29 && kelembaban > 30 && kelembaban > 31) {
+    } else if (kelembaban == 50 && kelembaban == 70) {
         matikanModulPeningkatanKelembaban();
         matikanModulPenurunanKelembaban();
 
     //  kelembaban di bawah standar minimum
-    } else if (kelembaban > 29 && kelembaban > 30 && kelembaban > 31) {
-    //    TODO: harus ngapain brou?
+    } else if (kelembaban < 50 && kelembaban < 70) {
+        modulPeningkatanKelembaban();
         
     //  kelembaban atas standar maksimal
-    } else if (kelembaban > 29 && kelembaban > 30 && kelembaban > 31) {
-    //    TODO: harus ngapain brou?
+    } else if (kelembaban > 29 && kelembaban > 30) {
+        modulPenurunanKelembaban();
     }
 }
 
@@ -92,21 +92,25 @@ void matikanModulPenurunanSuhu() {
 }
 
 void modulPeningkatanKelembaban() {
-    //meningkatkan kelembaban kandang ketika kelembaban di bawah normal dengan 
-    // TODO: harus ngapain brou?
+    //meningkatkan kelembaban kandang ketika kelembaban di bawah normal dengan menyalakan kipas
+    //relay2
+    digitalWrite(kipas2, relayON);
 }
 
 void matikanModulPeningkatanKelembaban() {
-    //mematikan modul peningkatan kelembaban ketika kelembaban normal tercapai dengan 
-    // TODO: harus ngapain brou?
+    //mematikan modul peningkatan kelembaban ketika kelembaban normal tercapai dengan mematikan kipas
+    //relay2
+    digitalWrite(kipas2, relayOFF);
 }
 
 void modulPenurunanKelembaban() {
-    //menurunkan kelembaban kandang ketika kelembaban di atas normal dengan 
-    // TODO: harus ngapain brou?
+    //menurunkan kelembaban kandang ketika kelembaban di atas normal dengan menyalakan lampu
+    //relay4
+    digitalWrite(lampu, relayON);
 }
 
 void matikanModulPenurunanKelembaban() {
-    //mematikan modul penurunan kelembaban ketika kelembaban normal tercapai dengan 
-    // TODO: harus ngapain brou?
+    //mematikan modul penurunan kelembaban ketika kelembaban normal tercapai dengan mematikan lampu
+    //relay4
+    digitalWrite(lampu, relayOFF);
 }
