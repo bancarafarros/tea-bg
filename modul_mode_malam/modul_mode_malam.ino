@@ -20,9 +20,6 @@ int relayOFF = HIGH; //relay mati
 
 void setup() {
     Serial.begin(9600);
-    
-    //  dht11
-    dht.begin();
 
     // rtc
     if (! rtc.begin()) {
@@ -48,10 +45,6 @@ void setup() {
 }
 
 void loop() {
-    //  dht11
-    float kelembaban = dht.readHumidity();
-    float suhu = dht.readTemperature();
-
     // rtc
     DateTime now = rtc.now();
     hari    = dataHari[now.dayOfTheWeek()];
