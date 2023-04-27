@@ -55,6 +55,15 @@ void loop() {
     menit   = now.minute(), DEC;
     detik   = now.second(), DEC;
 
+    // // kondisi real
+    // if (jam == 17 && menit == 0 && detik == 0) {
+    //     modulModeMalam();
+    
+    // } else if (jam == 7 && menit == 0 && detik == 0) {
+    //     matikanModulModeMalam();
+    // }
+
+    // kondisi coba2
     if (jam == 17 && menit == 0 && detik == 0) {
         modulModeMalam();
     
