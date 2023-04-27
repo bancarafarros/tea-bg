@@ -41,6 +41,7 @@ void loop() {
 
     //  modulPakan();
 
+    // kondisi coba2
     if(jam == 13 && menit == 49 && detik == 10) {
         modulPakan(); 
     }
@@ -53,6 +54,7 @@ void loop() {
         modulPakan(); 
     }
 
+    // // kondisi real
     //  if(jam == 7 && menit == 0 && detik == 0) {
     //    modulPakan(); 
     //  }
