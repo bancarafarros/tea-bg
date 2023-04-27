@@ -58,13 +58,15 @@ void loop() {
     //    Serial.println("Ketinggian air: 35mm - 40mm");
     //  }
 
+    // // kondisi real
     //  if (ketinggianAir < 530) {
     //    modulIsiBakMinum();
-    //  
+
     //  } else if (ketinggianAir > 705) {
     //    matikanModulIsiBakMinum();
     //  }
 
+    // // kondisi coba2
     if (ketinggianAir < 100) {
         modulIsiBakMinum();
 
