@@ -57,6 +57,10 @@ void setup() {
 }
 
 void loop() {
+    // BACA SUHU DAN KELEMBABAN
+    
+    // BACA SUHU DAN KELEMBABAN
+
     // BACA KETINGGIAN AIR
     ketinggianAir = analogRead(analogPin);
 
@@ -95,6 +99,16 @@ void loop() {
         modulPakan(); 
     }
     // KONDISI MODUL PAKAN
+
+    // KONDISI MODUL MODE MALAM
+    // kondisi coba2
+    if (jam == 13 && menit == 0 && detik == 0) {
+        matikanModulModeMalam();
+    
+    } else if (jam == 13 && menit == 2 && detik == 0) {
+        modulModeMalam();
+    }
+    // KONDISI MODUL MODE MALAM
 }
 
 // MODUL MINUM
@@ -110,6 +124,10 @@ void matikanModulIsiBakMinum() {
     digitalWrite(pompa, relayOFF);
 }
 // MODUL MINUM
+
+// MODUL MONITORING SUHU DAN KELEMBABAN
+
+// MODUL MONITORING SUHU DAN KELEMBABAN
 
 // MODUL PAKAN
 void modulPakan() {
@@ -127,3 +145,21 @@ void modulPakan() {
     }
 }
 // MODUL PAKAN
+
+// MODUL MODE MALAM
+void modulModeMalam() {
+    // menyalakan lampu kandang ketika waktu sudah memasuki malam hari
+    //relay4
+    digitalWrite(lampu, relayON);
+}
+
+void matikanModulModeMalam() {
+    // mematikan lampu kandang ketika waktu sudah memasuki pagi hari
+    //relay4
+    digitalWrite(lampu, relayOFF);
+}
+// MODUL MODE MALAM
+
+// MODUL KIRIM DATA
+
+// MODUL KIRIM DATA
