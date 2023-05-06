@@ -11,6 +11,22 @@ int tanggal, bulan, tahun, jam, menit, detik;
 Servo servoku;
 //servo
 
+//sensor ketinggian air
+int analogPin = A1;
+int ketinggianAir;
+//sensor ketinggian air
+
+// relay
+const int kipas1 = 10; //relay1 suhu
+const int kipas2 = 11; //relay2 kelembaban
+const int pompa = 12; //relay3
+const int lampu = 13; //relay4
+
+//on off relay
+int relayON = LOW; //relay nyala
+int relayOFF = HIGH; //relay mati
+// relay
+
 void setup() {
     Serial.begin(9600);
 
@@ -28,9 +44,32 @@ void setup() {
     rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
     //  rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
     // rtc ds3231
+
+    //  setup relay
+    pinMode(kipas1, OUTPUT);
+    pinMode(kipas2, OUTPUT);
+    pinMode(pompa, OUTPUT);
+    pinMode(lampu, OUTPUT);
+    digitalWrite(kipas1, relayOFF);
+    digitalWrite(kipas2, relayOFF);
+    digitalWrite(pompa, relayOFF);
+    digitalWrite(lampu, relayOFF);
 }
 
 void loop() {
+    // BACA KETINGGIAN AIR
+    ketinggianAir = analogRead(analogPin);
+
+    // KONDISI MODUL MINUM
+    // kondisi coba2
+    if (ketinggianAir < 100) {
+        modulIsiBakMinum();
+
+    } else if (ketinggianAir > 300) {
+        matikanModulIsiBakMinum();
+    }
+    // KONDISI MODUL MINUM
+
     // BACA WAKTU
     DateTime now = rtc.now();
     hari    = dataHari[now.dayOfTheWeek()];
@@ -57,6 +96,20 @@ void loop() {
     }
     // KONDISI MODUL PAKAN
 }
+
+// MODUL MINUM
+void modulIsiBakMinum() {
+    // mengisi bak minum dengan menyala pompa air ketika bak minum hampir kosong
+    //relay3
+    digitalWrite(pompa, relayON);
+    }
+
+void matikanModulIsiBakMinum() {
+    // mematikan pompa air ketika bak minum sudah hampir penuh
+    //relay3
+    digitalWrite(pompa, relayOFF);
+}
+// MODUL MINUM
 
 // MODUL PAKAN
 void modulPakan() {
