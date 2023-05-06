@@ -5,10 +5,6 @@ char dataHari[7][12] = {"Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "
 String hari;
 int tanggal, bulan, tahun, jam, menit, detik;
 
-//dht11
-#include <DHT.h>
-DHT dht(7, DHT11); //Pin, Jenis DHT
-
 //relay
 const int kipas1 = 10; //relay1 suhu
 const int kipas2 = 11; //relay2 kelembaban
