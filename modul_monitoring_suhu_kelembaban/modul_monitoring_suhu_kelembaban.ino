@@ -17,15 +17,15 @@ void setup() {
     //  dht11
     dht.begin();
 
-    //relay
-    pinMode(relay1, OUTPUT);
-    pinMode(relay2, OUTPUT);
-    pinMode(relay3, OUTPUT);
-    pinMode(relay4, OUTPUT);
-    digitalWrite(relay1, relayOFF);
-    digitalWrite(relay2, relayOFF);
-    digitalWrite(relay3, relayOFF);
-    digitalWrite(relay4, relayOFF);
+    //  setup relay
+    pinMode(kipas1, OUTPUT);
+    pinMode(kipas2, OUTPUT);
+    pinMode(pompa, OUTPUT);
+    pinMode(lampu, OUTPUT);
+    digitalWrite(kipas1, relayOFF);
+    digitalWrite(kipas2, relayOFF);
+    digitalWrite(pompa, relayOFF);
+    digitalWrite(lampu, relayOFF);
 }
 
 void loop() {
