@@ -1,5 +1,5 @@
 String dataIn;
-String dt[10];
+String dt[11];
 int i;
 boolean parsing = false;
 
@@ -51,15 +51,35 @@ void parsingData() {
     }
     
     // kirim data hasil parsing
-    Serial.print("data 1: ");
+    Serial.print("Ketinggian Air: ");
     Serial.print(dt[0].toInt());
     Serial.print("\n");
-    Serial.print("data 2: ");
+    Serial.print("Suhu: ");
     Serial.print(dt[1].toFloat());
     Serial.print("\n");
-    Serial.print("data 3: ");
+    Serial.print("Kelembaban: ");
     Serial.print(dt[2].toFloat());
     Serial.print("\n");
+    Serial.print("Hari: ");
+    Serial.print(dt[3]);
+    Serial.print("\n");
+    Serial.print("Tanggal: ");
+    Serial.print(dt[4]);
+    Serial.print("\n");
+    Serial.print("Bulan: ");
+    Serial.print(dt[5]);
+    Serial.print("\n");
+    Serial.print("Tahun: ");
+    Serial.print(dt[6]);
+    Serial.print("\n");
+    Serial.print("Jam: ");
+    Serial.print(dt[7]);
+    Serial.print("\n");
+    Serial.print("Menit: ");
+    Serial.print(dt[8]);
+    Serial.print("\n");
+    Serial.print("Detik: ");
+    Serial.print(dt[9]);
     Serial.print("\n");
     delay(5000);
 
