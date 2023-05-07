@@ -26,6 +26,16 @@ void setup(){
   Serial.begin(9600);
   
   dataIn = "";
+
+  // koneksi ke wifi
+  WiFi.begin("RINJANI01", "12345678");
+  // WiFi.begin("bringthaton", "12345666");
+  // cek koneksi wifi
+  while (WiFi.status() != WL_CONNECTED) {
+    Serial.print(".");
+    delay(1000);
+  }
+  Serial.println("Berhasil terhubung ke WiFi");
   
   Blynk.begin(auth, ssid, pass, "blynk.cloud", 80);
   timer.setInterval(2500L, sendSensor);
