@@ -40,29 +40,29 @@ void loop() {
     //  Serial.println(suhu);
 
     //  suhu normal
-    if (suhu == 29 && suhu == 30 && suhu == 31) {
+    if (suhu >= 29 && suhu <= 31) {
         matikanModulPeningkatanSuhu();
         matikanModulPenurunanSuhu();
 
     //  suhu di bawah standar minimum
-    } else if (suhu < 29 && suhu < 30 && suhu < 31) {
+    } else if (suhu < 29) {
         modulPeningkatanSuhu();
     
     //  suhu di atas standar maksimal
-    } else if (suhu > 29 && suhu > 30 && suhu > 31) {
+    } else if (suhu > 31) {
         modulPenurunanSuhu();
 
     //  kelembaban normal
-    } else if (kelembaban == 50 && kelembaban == 70) {
+    } else if (kelembaban >= 50 && kelembaban <= 70) {
         matikanModulPeningkatanKelembaban();
         matikanModulPenurunanKelembaban();
 
     //  kelembaban di bawah standar minimum
-    } else if (kelembaban < 50 && kelembaban < 70) {
+    } else if (kelembaban < 50) {
         modulPeningkatanKelembaban();
         
-    //  kelembaban atas standar maksimal
-    } else if (kelembaban > 29 && kelembaban > 30) {
+    //  kelembaban di atas standar maksimal
+    } else if (kelembaban > 70) {
         modulPenurunanKelembaban();
     }
 }
