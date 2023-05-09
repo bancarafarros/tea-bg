@@ -1,8 +1,8 @@
-//#define BLYNK_TEMPLATE_ID "TMPL7Kbei8eW"
-//#define BLYNK_DEVICE_NAME "pakan ikan"
-//#define BLYNK_AUTH_TOKEN "IlmYUA0xrBAQ8eVPpOepJuw_zeF_aEz5" //slimeshady
+//#define BLYNK_TEMPLATE_ID "TMPL69iGXFtzB"
+//#define BLYNK_TEMPLATE_NAME "kandang ayam"
+//#define BLYNK_AUTH_TOKEN "7RyZrouJIw0UjHCwF0YN1iWY-qcmfkdn"
 
-#define BLYNK_AUTH_TOKEN "QFObAc1OGv0tuMGZwuqRxFaXGLzr0Opg" //dilstradamus
+#define BLYNK_AUTH_TOKEN "7RyZrouJIw0UjHCwF0YN1iWY-qcmfkdn"
 
 #define BLYNK_PRINT Serial
 #include <ESP8266WiFi.h>
@@ -121,6 +121,15 @@ void parsingData() {
 }
 
 void sendSensor(){
-  Blynk.virtualWrite(V0, dt[1]);
-  Blynk.virtualWrite(V1, dt[2]);
+  Blynk.virtualWrite(V0, dt[0]);
+  Blynk.virtualWrite(V1, dt[1]);
+  Blynk.virtualWrite(V2, dt[2]);
+  Blynk.virtualWrite(V3, dt[3]);
+  Blynk.virtualWrite(V4, dt[4]);
+  Blynk.virtualWrite(V5, dt[5]);
+  Blynk.virtualWrite(V6, dt[6]);
+  Blynk.virtualWrite(V7, dt[7]);
+  Blynk.virtualWrite(V8, dt[8]);
+  Blynk.virtualWrite(V9, dt[9]);
+  Blynk.virtualWrite(V10, dt[10]);
 }
