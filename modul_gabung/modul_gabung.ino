@@ -146,6 +146,10 @@ void loop() {
         modulModeMalam();
     }
     // KONDISI MODUL MODE MALAM
+
+    // KIRIM DATA KE NODEMCU
+    modulKirimData();
+    // KIRIM DATA KE NODEMCU
 }
 
 // MODUL MINUM
@@ -244,5 +248,14 @@ void matikanModulModeMalam() {
 // MODUL MODE MALAM
 
 // MODUL KIRIM DATA
-
+void modulKirimData() {
+    // BACA SUHU DAN KELEMBABAN
+    float kelembaban = dht.readHumidity();
+    float suhu = dht.readTemperature();
+    // BACA SUHU DAN KELEMBABAN
+    
+    String dataKirim = "#" + String(ketinggianAir) + "#" + String(suhu) + "#" + String(kelembaban) + "#" + String(hari) + "#" + String(tanggal) + "#" + String(bulan) + "#" + String(tahun) + "#" + String(jam) + "#" + String(menit) + "#" + String(detik);
+    Serial.println(dataKirim);
+    delay(5000);
+}
 // MODUL KIRIM DATA
