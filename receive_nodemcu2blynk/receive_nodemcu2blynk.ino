@@ -97,20 +97,16 @@ void parsingData() {
     // Serial.println(dt[1].toFloat());
     // Serial.print("Kelembaban: ");
     // Serial.println(dt[2].toFloat());
-    // Serial.print("Hari: ");
+    // Serial.print("Status Pakan: ");
     // Serial.println(dt[3]);
-    // Serial.print("Tanggal: ");
+    // Serial.print("statusKipasSuhu: ");
     // Serial.println(dt[4]);
-    // Serial.print("Bulan: ");
+    // Serial.print("statusKipasKelembaban: ");
     // Serial.println(dt[5]);
-    // Serial.print("Tahun: ");
+    // Serial.print("Status Pompa;: ");
     // Serial.println(dt[6]);
-    // Serial.print("Jam: ");
+    // Serial.print("statusLampu: ");
     // Serial.println(dt[7]);
-    // Serial.print("Menit: ");
-    // Serial.println(dt[8]);
-    // Serial.print("Detik: ");
-    // Serial.println(dt[9]);
     // delay(5000);
 }
 
@@ -119,5 +115,8 @@ void sendSensor(){
   Blynk.virtualWrite(V1, dt[1].toFloat()); // suhu
   Blynk.virtualWrite(V2, dt[2].toFloat()); // kelembaban
   Blynk.virtualWrite(V3, dt[3]); // statusPakan
-  Blynk.virtualWrite(V4, dt[4].toInt()); // statusPompa
+  Blynk.virtualWrite(V4, dt[4].toInt()); // statusKipasSuhu
+  Blynk.virtualWrite(V5, dt[5].toInt()); // statusKipasKelembaban
+  Blynk.virtualWrite(V6, dt[6].toInt()); // statusPompa
+  Blynk.virtualWrite(V7, dt[7].toInt()); // statusLampu
 }
