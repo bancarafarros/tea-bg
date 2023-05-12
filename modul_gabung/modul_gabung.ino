@@ -31,6 +31,8 @@ int relayON = LOW; //relay nyala
 int relayOFF = HIGH; //relay mati
 // relay
 
+bool statusPompa;
+
 void setup() {
     Serial.begin(9600);
 
@@ -157,12 +159,14 @@ void modulIsiBakMinum() {
     // mengisi bak minum dengan menyala pompa air ketika bak minum hampir kosong
     //relay3
     digitalWrite(pompa, relayON);
+    statusPompa = HIGH;
     }
 
 void matikanModulIsiBakMinum() {
     // mematikan pompa air ketika bak minum sudah hampir penuh
     //relay3
     digitalWrite(pompa, relayOFF);
+    statusPompa = LOW;
 }
 // MODUL MINUM
 
@@ -254,7 +258,8 @@ void modulKirimData() {
     float suhu = dht.readTemperature();
     // BACA SUHU DAN KELEMBABAN
     
-    String dataKirim = "#" + String(ketinggianAir) + "#" + String(suhu) + "#" + String(kelembaban) + "#" + String(hari) + "#" + String(tanggal) + "#" + String(bulan) + "#" + String(tahun) + "#" + String(jam) + "#" + String(menit) + "#" + String(detik);
+    // String dataKirim = "#" + String(ketinggianAir) + "#" + String(suhu) + "#" + String(kelembaban) + "#" + String(hari) + "#" + String(tanggal) + "#" + String(bulan) + "#" + String(tahun) + "#" + String(jam) + "#" + String(menit) + "#" + String(detik) + "#" + String(statusPompa);
+    String dataKirim = "#" + String(ketinggianAir) + "#" + String(suhu) + "#" + String(kelembaban) + "#" + String(hari) + "#" + String(statusPompa);
     Serial.println(dataKirim);
     delay(5000);
 }
