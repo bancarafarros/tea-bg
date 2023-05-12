@@ -40,7 +40,7 @@ void setup() {
     dht.begin();
 
     // servo
-    servoku.attach(3);
+    servoku.attach(6);
 
     // rtc ds3231
     if (! rtc.begin()) {

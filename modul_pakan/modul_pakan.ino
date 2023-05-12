@@ -12,7 +12,7 @@ Servo servoku;
 void setup() {
     Serial.begin(9600);
 
-    servoku.attach(3);
+    servoku.attach(6);
 
     if (! rtc.begin()) {
         Serial.println("RTC Tidak Ditemukan");
