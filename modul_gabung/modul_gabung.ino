@@ -31,7 +31,10 @@ int relayON = LOW; //relay nyala
 int relayOFF = HIGH; //relay mati
 // relay
 
+bool statusKipasSuhu;
+bool statusKipasKelembaban;
 bool statusPompa;
+bool statusLampu;
 
 void setup() {
     Serial.begin(9600);
@@ -175,48 +178,56 @@ void modulPeningkatanSuhu() {
     //meningkatkan suhu kandang ketika suhu di bawah normal dengan menyalakan lampu
     //relay4
     digitalWrite(lampu, relayON);
+    statusLampu = HIGH;
 }
 
 void matikanModulPeningkatanSuhu() {
     //mematikan modul peningkatan suhu ketika suhu normal tercapai dengan mematikan lampu
     //relay4
     digitalWrite(lampu, relayOFF);
+    statusLampu = LOW;
 }
 
 void modulPenurunanSuhu() {
     //menurunkan suhu kandang ketika suhu di atas normal dengan menyalakan kipas1
     //relay1
     digitalWrite(kipas1, relayON);
+    statusKipasSuhu = HIGH;
 }
 
 void matikanModulPenurunanSuhu() {
     //mematikan modul penurunan suhu ketika suhu normal tercapai dengan mematikan kipas1
     //relay1
     digitalWrite(kipas1, relayOFF);
+    statusKipasSuhu = LOW;
 }
 
 void modulPeningkatanKelembaban() {
     //meningkatkan kelembaban kandang ketika kelembaban di bawah normal dengan menyalakan kipas
     //relay2
     digitalWrite(kipas2, relayON);
+    statusKipasKelembaban = HIGH;
 }
 
 void matikanModulPeningkatanKelembaban() {
     //mematikan modul peningkatan kelembaban ketika kelembaban normal tercapai dengan mematikan kipas
     //relay2
     digitalWrite(kipas2, relayOFF);
+    statusKipasKelembaban = LOW;
 }
 
 void modulPenurunanKelembaban() {
     //menurunkan kelembaban kandang ketika kelembaban di atas normal dengan menyalakan lampu
     //relay4
     digitalWrite(lampu, relayON);
+    statusLampu = HIGH;
 }
 
 void matikanModulPenurunanKelembaban() {
     //mematikan modul penurunan kelembaban ketika kelembaban normal tercapai dengan mematikan lampu
     //relay4
     digitalWrite(lampu, relayOFF);
+    statusLampu = LOW;
 }
 // MODUL MONITORING SUHU DAN KELEMBABAN
 
@@ -242,12 +253,14 @@ void modulModeMalam() {
     // menyalakan lampu kandang ketika waktu sudah memasuki malam hari
     //relay4
     digitalWrite(lampu, relayON);
+    statusLampu = HIGH;
 }
 
 void matikanModulModeMalam() {
     // mematikan lampu kandang ketika waktu sudah memasuki pagi hari
     //relay4
     digitalWrite(lampu, relayOFF);
+    statusLampu = LOW;
 }
 // MODUL MODE MALAM
 
@@ -257,9 +270,22 @@ void modulKirimData() {
     float kelembaban = dht.readHumidity();
     float suhu = dht.readTemperature();
     // BACA SUHU DAN KELEMBABAN
+
+    String statusPakan;
+    if(jam == 7 && menit == 0 && detik == 0) {
+      String statusPakan = "7:0:0";
+    }
     
-    // String dataKirim = "#" + String(ketinggianAir) + "#" + String(suhu) + "#" + String(kelembaban) + "#" + String(hari) + "#" + String(tanggal) + "#" + String(bulan) + "#" + String(tahun) + "#" + String(jam) + "#" + String(menit) + "#" + String(detik) + "#" + String(statusPompa);
-    String dataKirim = "#" + String(ketinggianAir) + "#" + String(suhu) + "#" + String(kelembaban) + "#" + String(hari) + "#" + String(statusPompa);
+    if(jam == 12 && menit == 0 && detik == 0) {
+      String statusPakan = "12:0:0";
+    }
+    
+    if(jam == 17 && menit == 0 && detik == 0) {
+      String statusPakan = "17:0:0";
+    }
+    
+    // String dataKirim = "#" + String(ketinggianAir) + "#" + String(suhu) + "#" + String(kelembaban) + "#" + String(String() + jam + ":" + menit + ":" + detik) + "#" + String(statusPompa);
+    String dataKirim = "#" + String(ketinggianAir) + "#" + String(suhu) + "#" + String(kelembaban) + "#" + String(statusPakan) + "#" + String(statusKipasSuhu) + "#" + String(statusKipasKelembaban) + "#" + String(statusPompa) + "#" + String(statusLampu);
     Serial.println(dataKirim);
     delay(5000);
 }
