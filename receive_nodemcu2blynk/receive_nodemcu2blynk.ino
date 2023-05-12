@@ -120,16 +120,4 @@ void sendSensor(){
   Blynk.virtualWrite(V2, dt[2].toFloat()); // kelembaban
   Blynk.virtualWrite(V3, dt[3]); // statusPakan
   Blynk.virtualWrite(V4, dt[4].toInt()); // statusPompa
-
-//  Blynk.virtualWrite(V0, dt[0]); // ketinggian air
-//  Blynk.virtualWrite(V1, dt[1]); // suhu
-//  Blynk.virtualWrite(V2, dt[2]); // kelembaban
-//  Blynk.virtualWrite(V3, dt[3]); // hari
-//  Blynk.virtualWrite(V4, dt[4]); // tanggal
-//  Blynk.virtualWrite(V5, dt[5]); // bulan
-//  Blynk.virtualWrite(V6, dt[6]); // tahun
-//  Blynk.virtualWrite(V7, dt[7]); // jam
-//  Blynk.virtualWrite(V8, dt[8]); // menit
-//  Blynk.virtualWrite(V9, dt[9]); // detik
-//  Blynk.virtualWrite(V10, dt[10]); // statusPompa
 }
