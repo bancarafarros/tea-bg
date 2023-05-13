@@ -270,23 +270,9 @@ void modulKirimData() {
     float kelembaban = dht.readHumidity();
     float suhu = dht.readTemperature();
     // BACA SUHU DAN KELEMBABAN
-
-    String statusPakan;
-    if(jam == 7 && menit == 0 && detik == 0) {
-      String statusPakan = "7:0:0";
-    }
     
-    if(jam == 12 && menit == 0 && detik == 0) {
-      String statusPakan = "12:0:0";
-    }
-    
-    if(jam == 17 && menit == 0 && detik == 0) {
-      String statusPakan = "17:0:0";
-    }
-    
-    // String dataKirim = "#" + String(ketinggianAir) + "#" + String(suhu) + "#" + String(kelembaban) + "#" + String(String() + jam + ":" + menit + ":" + detik) + "#" + String(statusPompa);
-    String dataKirim = "#" + String(ketinggianAir) + "#" + String(suhu) + "#" + String(kelembaban) + "#" + String(statusPakan) + "#" + String(statusKipasSuhu) + "#" + String(statusKipasKelembaban) + "#" + String(statusPompa) + "#" + String(statusLampu);
+    String dataKirim = "#" + String(ketinggianAir) + "#" + String(suhu) + "#" + String(kelembaban) + "#" + String(String() + jam + ":" + menit + ":" + detik) + "#" + String(statusKipasSuhu) + "#" + String(statusKipasKelembaban) + "#" + String(statusPompa) + "#" + String(statusLampu);
     Serial.println(dataKirim);
-    delay(5000);
+    delay(1000);
 }
 // MODUL KIRIM DATA
