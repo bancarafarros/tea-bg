@@ -43,7 +43,7 @@ void setup(){
   // koneksi ke wifi
 
   Blynk.begin(auth, ssid, pass, "blynk.cloud", 80);
-  timer.setInterval(5000L, sendSensor);
+  timer.setInterval(1000L, sendSensor);
 }
 
 void loop(){
@@ -119,4 +119,26 @@ void sendSensor(){
   Blynk.virtualWrite(V5, dt[5].toInt()); // statusKipasKelembaban
   Blynk.virtualWrite(V6, dt[6].toInt()); // statusPompa
   Blynk.virtualWrite(V7, dt[7].toInt()); // statusLampu
+
+//  kondisi coba2
+  if(dt[3] == "15:35:0"){
+    Blynk.logEvent("status_pakan","Pakan sudah diberikan pada jam 7");
+  
+  } else if(dt[3] == "15:36:0"){
+    Blynk.logEvent("status_pakan","Pakan sudah diberikan pada jam 12");
+  
+  } else if(dt[3] == "15:37:0"){
+    Blynk.logEvent("status_pakan","Pakan sudah diberikan pada jam 17");
+  }
+
+  // kondisi real
+//  if(dt[3] == "7:0:0"){
+//    Blynk.logEvent("status_pakan","Pakan sudah diberikan pada jam 7");
+//  
+//  } else if(dt[3] == "12:0:0"){
+//    Blynk.logEvent("status_pakan","Pakan sudah diberikan pada jam 12");
+//  
+//  } else if(dt[3] == "17:0:0"){
+//    Blynk.logEvent("status_pakan","Pakan sudah diberikan pada jam 17");
+//  }
 }
