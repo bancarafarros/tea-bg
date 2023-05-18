@@ -30,9 +30,7 @@ void setup(){
   dataIn = "";
 
   // koneksi ke wifi
-  WiFi.begin("RINJANI01", "12345678");
-  // WiFi.begin("bringthaton", "12345666");
-  // WiFi.begin("Hotspot Area", "sekolahvokasimadiun");
+  WiFi.begin(ssid, pass);
   
   // cek koneksi wifi
   while (WiFi.status() != WL_CONNECTED) {
