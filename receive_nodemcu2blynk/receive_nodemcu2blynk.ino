@@ -87,25 +87,6 @@ void parsingData() {
             dt[j] = dt[j] + dataIn[i];
         }
     }
-    
-    // // print data hasil parsing
-    // Serial.print("Ketinggian Air: ");
-    // Serial.println(dt[0].toInt());
-    // Serial.print("Suhu: ");
-    // Serial.println(dt[1].toFloat());
-    // Serial.print("Kelembaban: ");
-    // Serial.println(dt[2].toFloat());
-    // Serial.print("Status Pakan: ");
-    // Serial.println(dt[3]);
-    // Serial.print("statusKipasSuhu: ");
-    // Serial.println(dt[4]);
-    // Serial.print("statusKipasKelembaban: ");
-    // Serial.println(dt[5]);
-    // Serial.print("Status Pompa;: ");
-    // Serial.println(dt[6]);
-    // Serial.print("statusLampu: ");
-    // Serial.println(dt[7]);
-    // delay(5000);
 }
 
 void sendSensor(){
