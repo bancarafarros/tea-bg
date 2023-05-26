@@ -93,7 +93,6 @@ void sendSensor(){
   Blynk.virtualWrite(V0, dt[0].toInt()); // ketinggian air
   Blynk.virtualWrite(V1, dt[1].toFloat()); // suhu
   Blynk.virtualWrite(V2, dt[2].toFloat()); // kelembaban
-  Blynk.virtualWrite(V3, dt[3]); // statusPakan
   Blynk.virtualWrite(V4, dt[4].toInt()); // statusKipasSuhu
   Blynk.virtualWrite(V5, dt[5].toInt()); // statusKipasKelembaban
   Blynk.virtualWrite(V6, dt[6].toInt()); // statusPompa
