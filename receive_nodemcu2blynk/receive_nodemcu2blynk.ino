@@ -67,23 +67,18 @@ void loop(){
 void parsingData() {
     int j = 0;
 
-    //  kirim data yang telah diterima sebelumnya
     Serial.print("data masuk: ");
     Serial.print(dataIn);
 
-    //inisialisasi variabel, (reset isi variabel)
     dt[j] = "";
 
-    //proses parsing data
     for(i=1; i<dataIn.length(); i++) {
-        //SEPARATOR (#)
+
         if((dataIn[i] == '#')) {
-            //increment variabel j, digunakan untuk merubah index array penampung
             j++;
-            dt[j] = ""; //inisialisasi variabel array dt[j]
+            dt[j] = "";
             
         } else {
-            //proses menampung data saat pengecekan karakter sudah selesai
             dt[j] = dt[j] + dataIn[i];
         }
     }
