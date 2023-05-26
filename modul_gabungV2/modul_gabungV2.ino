@@ -79,8 +79,20 @@ void loop() {
     // BACA KETINGGIAN AIR
     ketinggianAir = analogRead(analogPin);
     ketinggianAirMm = map(ketinggianAir, 0, 1023, 0, 255);
+    // BACA KETINGGIAN AIR
 
-    // KONDISI MODUL MONITORING SUSHU DAN KELEMBABAN
+    // BACA WAKTU
+    DateTime now = rtc.now();
+    hari    = dataHari[now.dayOfTheWeek()];
+    tanggal = now.day(), DEC;
+    bulan   = now.month(), DEC;
+    tahun   = now.year(), DEC;
+    jam     = now.hour(), DEC;
+    menit   = now.minute(), DEC;
+    detik   = now.second(), DEC;
+    // BACA WAKTU
+
+    // KONDISI MODUL MONITORING SUHU DAN KELEMBABAN
     //  suhu normal
     if (suhu >= 29 && suhu <= 31) {
         matikanModulPeningkatanSuhu();
@@ -111,24 +123,13 @@ void loop() {
     
     // KONDISI MODUL MINUM
     // kondisi coba2
-    if (ketinggianAirMm < 30) {
+    if (ketinggianAirMm < 5) {
         modulIsiBakMinum();
 
-    } else if (ketinggianAirMm > 60) {
+    } else if (ketinggianAirMm > 25) {
         matikanModulIsiBakMinum();
     }
     // KONDISI MODUL MINUM
-
-    // BACA WAKTU
-    DateTime now = rtc.now();
-    hari    = dataHari[now.dayOfTheWeek()];
-    tanggal = now.day(), DEC;
-    bulan   = now.month(), DEC;
-    tahun   = now.year(), DEC;
-    jam     = now.hour(), DEC;
-    menit   = now.minute(), DEC;
-    detik   = now.second(), DEC;
-    // BACA WAKTU
 
     // KONDISI MODUL PAKAN
     // kondisi coba2
