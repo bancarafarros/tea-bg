@@ -119,7 +119,7 @@ void loop() {
     } else if (kelembaban > 70) {
         modulPenurunanKelembaban();
     }
-    // KONDISI MODUL MONITORING SUSHU DAN KELEMBABAN
+    // KONDISI MODUL MONITORING SUHU DAN KELEMBABAN
     
     // KONDISI MODUL MINUM
     // kondisi coba2
