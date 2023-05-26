@@ -20,7 +20,7 @@ char pass[] = "12345678";
 BlynkTimer timer;
 
 String dataIn;
-String dt[11];
+String dt[8];
 int i;
 boolean parsing = false;
 
