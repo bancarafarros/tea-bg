@@ -1,6 +1,6 @@
 //dht11
 #include <DHT.h>
-DHT dht(7, DHT11); //Pin, Jenis DHT
+DHT dht(7, DHT11);
 
 //rtc
 #include "RTClib.h"
@@ -164,7 +164,7 @@ void modulIsiBakMinum() {
     //relay3
     digitalWrite(pompa, relayON);
     statusPompa = HIGH;
-    }
+}
 
 void matikanModulIsiBakMinum() {
     // mematikan pompa air ketika bak minum sudah hampir penuh

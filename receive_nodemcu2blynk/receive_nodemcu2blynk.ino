@@ -37,7 +37,7 @@ void setup(){
     Serial.print(".");
     delay(1000);
   }
-  
+
   Serial.println("Berhasil terhubung ke WiFi");
   // koneksi ke wifi
 
@@ -66,23 +66,23 @@ void loop(){
 }
 
 void parsingData() {
-    int j = 0;
+  int j = 0;
 
-    Serial.print("data masuk: ");
-    Serial.print(dataIn);
+  Serial.print("data masuk: ");
+  Serial.print(dataIn);
 
-    dt[j] = "";
+  dt[j] = "";
 
-    for(i=1; i<dataIn.length(); i++) {
-
-        if((dataIn[i] == '#')) {
-            j++;
-            dt[j] = "";
-            
-        } else {
-            dt[j] = dt[j] + dataIn[i];
-        }
+  for(i=1; i<dataIn.length(); i++) {
+      
+    if((dataIn[i] == '#')) {
+      j++;
+      dt[j] = "";
+      
+    } else {
+      dt[j] = dt[j] + dataIn[i];
     }
+  }
 }
 
 void sendSensor(){
