@@ -122,7 +122,6 @@ void loop() {
     // KONDISI MODUL MONITORING SUHU DAN KELEMBABAN
     
     // KONDISI MODUL MINUM
-    // kondisi coba2
     if (ketinggianAirMm < 5) {
         modulIsiBakMinum();
 
@@ -132,26 +131,24 @@ void loop() {
     // KONDISI MODUL MINUM
 
     // KONDISI MODUL PAKAN
-    // kondisi coba2
-    if(jam == 13 && menit == 49 && detik == 10) {
+    if(jam == 7 && menit == 0 && detik == 0) {
         modulPakan(); 
     }
 
-    if(jam == 13 && menit == 49 && detik == 30) {
+    if(jam == 12 && menit == 0 && detik == 0) {
         modulPakan(); 
     }
 
-    if(jam == 13 && menit == 49 && detik == 50) {
+    if(jam == 17 && menit == 0 && detik == 0) {
         modulPakan(); 
     }
     // KONDISI MODUL PAKAN
 
     // KONDISI MODUL MODE MALAM
-    // kondisi coba2
-    if (jam == 13 && menit == 0 && detik == 0) {
+    if (jam == 7 && menit == 0 && detik == 0) {
         matikanModulModeMalam();
     
-    } else if (jam == 13 && menit == 2 && detik == 0) {
+    } else if (jam == 17 && menit == 0 && detik == 0) {
         modulModeMalam();
     }
     // KONDISI MODUL MODE MALAM
