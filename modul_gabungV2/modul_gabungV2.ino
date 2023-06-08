@@ -158,9 +158,26 @@ void loop() {
     // KIRIM DATA KE NODEMCU
 }
 
+// MODUL PAKAN
+void modulPakan() {
+    // proses perputaran pakan secara halus
+    for (int posisi = 0; posisi <= 180; posisi++) {
+        // set posisi servo berdasarkan variabel posisi
+        servoku.write(posisi);
+        delay(10);
+    }
+
+    // proses perputaran tempat pakan kembali ke posisi awal
+    for (int posisi = 180; posisi >= 0; posisi--) {
+        servoku.write(posisi);
+        delay(10);
+    }
+}
+// MODUL PAKAN
+
 // MODUL MINUM
 void modulIsiBakMinum() {
-    // mengisi bak minum dengan menyala pompa air ketika bak minum hampir kosong
+    // mengisi bak minum dengan menyalakan pompa air ketika bak minum hampir kosong
     //relay3
     digitalWrite(pompa, relayON);
     statusPompa = HIGH;
@@ -231,23 +248,6 @@ void matikanModulPenurunanKelembaban() {
     statusLampu = LOW;
 }
 // MODUL MONITORING SUHU DAN KELEMBABAN
-
-// MODUL PAKAN
-void modulPakan() {
-    // proses perputaran pakan secara halus
-    for (int posisi = 0; posisi <= 180; posisi++) {
-        // set posisi servo berdasarkan variabel posisi
-        servoku.write(posisi);
-        delay(10);
-    }
-
-    // proses perputaran tempat pakan kembali ke posisi awal
-    for (int posisi = 180; posisi >= 0; posisi--) {
-        servoku.write(posisi);
-        delay(10);
-    }
-}
-// MODUL PAKAN
 
 // MODUL MODE MALAM
 void modulModeMalam() {
