@@ -46,7 +46,8 @@ void setup(){
 }
 
 void loop(){
-  if(Serial.available() > 0) {
+  // terima data dari hasil komunikasi serial dengan Uno
+  while(Serial.available() > 0) {
         char inChar = (char)Serial.read();
         dataIn += inChar;
         
@@ -55,6 +56,7 @@ void loop(){
         }
     }
 
+    // parsing data yang sudah diterima
     if(parsing) {
         parsingData();
         parsing = false;
@@ -65,6 +67,7 @@ void loop(){
   timer.run();
 }
 
+// MODUL PARSING DATA
 void parsingData() {
   int j = 0;
 
@@ -73,8 +76,11 @@ void parsingData() {
 
   dt[j] = "";
 
+  // perulangan for untuk parsing data
   for(i=1; i<dataIn.length(); i++) {
-      
+
+    // # sebagai separator antar nilai sensor
+    // increment j untuk merubah index penampung
     if((dataIn[i] == '#')) {
       j++;
       dt[j] = "";
@@ -84,8 +90,11 @@ void parsingData() {
     }
   }
 }
+// MODUL PARSING DATA
 
+// MODUL KIRIM DATA KE BLYNK
 void sendSensor(){
+  // function virtualWrite untuk mengirim data ke pin virtual di Blynk
   Blynk.virtualWrite(V0, dt[0].toInt()); // ketinggian air
   Blynk.virtualWrite(V1, dt[1].toFloat()); // suhu
   Blynk.virtualWrite(V2, dt[2].toFloat()); // kelembaban
@@ -94,6 +103,7 @@ void sendSensor(){
   Blynk.virtualWrite(V6, dt[6].toInt()); // statusPompa
   Blynk.virtualWrite(V7, dt[7].toInt()); // statusLampu
 
+  // function logEvent untuk mengirimkan notifikasi kepada smartphone
   if(dt[3] == "7:0:0"){
     Blynk.logEvent("status_pakan","Pakan sudah diberikan pada jam 7");
 
@@ -104,3 +114,4 @@ void sendSensor(){
     Blynk.logEvent("status_pakan","Pakan sudah diberikan pada jam 17");
   }
 }
+// MODUL KIRIM DATA KE BLYNK
