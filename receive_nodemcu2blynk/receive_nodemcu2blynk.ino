@@ -46,23 +46,26 @@ void setup(){
 }
 
 void loop(){
-  // terima data dari hasil komunikasi serial dengan Uno
+  // cek apakah memungkinkan dilakukan komunikasi serial
   while(Serial.available() > 0) {
-        char inChar = (char)Serial.read();
-        dataIn += inChar;
-        
-        if (inChar == '\n') {
-            parsing = true;
-        }
-    }
+    // merubah tipe data yang diterima menjadi char
+    char inChar = (char)Serial.read();
+    dataIn += inChar;
 
     // parsing data yang sudah diterima
-    if(parsing) {
-        parsingData();
-        parsing = false;
-        dataIn = "";
+    if (inChar == '\n') {
+      parsing = true;
     }
+  }
   
+  // parsing data selesai
+  if(parsing) {
+    parsingData();
+    parsing = false;
+    dataIn = "";
+  }
+  
+  // jalankan library Blynk
   Blynk.run();
   timer.run();
 }
@@ -74,18 +77,21 @@ void parsingData() {
   Serial.print("data masuk: ");
   Serial.print(dataIn);
 
+  // penampung data yang akan diparsing
   dt[j] = "";
 
-  // perulangan for untuk parsing data
+  // perulangan for untuk parsing data dalam dataIn
   for(i=1; i<dataIn.length(); i++) {
 
     // # sebagai separator antar nilai sensor
-    // increment j untuk merubah index penampung
     if((dataIn[i] == '#')) {
+      // increment j untuk merubah index penampung
       j++;
+      // dt[j] dikosongkan untuk menampung data selanjutnya
       dt[j] = "";
       
     } else {
+      // hasil prasing data ditampung dalam dt[j]
       dt[j] = dt[j] + dataIn[i];
     }
   }
