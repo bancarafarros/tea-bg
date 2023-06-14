@@ -30,14 +30,14 @@ void setup() {
     // end of rtc
 
     //relay
-    pinMode(relay1, OUTPUT);
-    pinMode(relay2, OUTPUT);
-    pinMode(relay3, OUTPUT);
-    pinMode(relay4, OUTPUT);
-    digitalWrite(relay1, relayOFF);
-    digitalWrite(relay2, relayOFF);
-    digitalWrite(relay3, relayOFF);
-    digitalWrite(relay4, relayOFF);
+    pinMode(kipas1, OUTPUT);
+    pinMode(kipas2, OUTPUT);
+    pinMode(pompa, OUTPUT);
+    pinMode(lampu, OUTPUT);
+    digitalWrite(kipas1, relayOFF);
+    digitalWrite(kipas2, relayOFF);
+    digitalWrite(pompa, relayOFF);
+    digitalWrite(lampu, relayOFF);
 }
 
 void loop() {
@@ -51,20 +51,24 @@ void loop() {
     menit   = now.minute(), DEC;
     detik   = now.second(), DEC;
 
-    // // kondisi real
-    // if (jam == 17 && menit == 0 && detik == 0) {
-    //     modulModeMalam();
-    
-    // } else if (jam == 7 && menit == 0 && detik == 0) {
-    //     matikanModulModeMalam();
-    // }
+    Serial.println(String() + hari + ", " + tanggal + "-" + bulan + "-" + tahun);
+    Serial.println(String() + jam + ":" + menit + ":" + detik);
+    Serial.println();
+
+//    // kondisi coba2
+//    if (jam >= 7) {
+//        matikanModulModeMalam();
+//    
+//    } else if (jam >= 17) {
+//        modulModeMalam();
+//    }
 
     // kondisi coba2
-    if (jam == 17 && menit == 0 && detik == 0) {
-        modulModeMalam();
-    
-    } else if (jam == 7 && menit == 0 && detik == 0) {
+    if (jam >= 7 && jam <= 17) {
         matikanModulModeMalam();
+    
+    } else if (jam >= 17 || jam <= 7) {
+        modulModeMalam();
     }
 }
 
