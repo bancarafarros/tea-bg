@@ -145,10 +145,10 @@ void loop() {
     // KONDISI MODUL PAKAN
 
     // KONDISI MODUL MODE MALAM
-    if (jam == 7) {
+    if (jam >= 7 && jam <= 17) {
         matikanModulModeMalam();
     
-    } else if (jam == 21) {
+    } else if (jam >= 17 || jam <= 7) {
         modulModeMalam();
     }
     // KONDISI MODUL MODE MALAM
