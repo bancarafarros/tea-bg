@@ -125,22 +125,22 @@ void loop() {
     if (ketinggianAirMm < 5) {
         modulIsiBakMinum();
 
-    } else if (ketinggianAirMm > 25) {
+    } else if (ketinggianAirMm > 40) {
         matikanModulIsiBakMinum();
     }
     // KONDISI MODUL MINUM
 
     // KONDISI MODUL PAKAN
     if(jam == 7 && menit == 0 && detik == 0) {
-        modulPakan(); 
+        modulPakan();
     }
 
     if(jam == 12 && menit == 0 && detik == 0) {
-        modulPakan(); 
+        modulPakan();
     }
 
     if(jam == 17 && menit == 0 && detik == 0) {
-        modulPakan(); 
+        modulPakan();
     }
     // KONDISI MODUL PAKAN
 
