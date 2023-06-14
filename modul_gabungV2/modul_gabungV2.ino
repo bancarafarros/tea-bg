@@ -105,9 +105,10 @@ void loop() {
     //  suhu di atas standar maksimal
     } else if (suhu > 31) {
         modulPenurunanSuhu();
-
+    }
+    
     //  kelembaban normal
-    } else if (kelembaban >= 50 && kelembaban <= 70) {
+    if (kelembaban >= 50 && kelembaban <= 70) {
         matikanModulPeningkatanKelembaban();
         matikanModulPenurunanKelembaban();
 
