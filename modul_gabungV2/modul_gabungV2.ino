@@ -133,13 +133,11 @@ void loop() {
     // KONDISI MODUL PAKAN
     if(jam == 7) {
         modulPakan();
-    }
-
-    if(jam == 12) {
+    
+    } else if(jam == 12) {
         modulPakan();
-    }
-
-    if(jam == 17) {
+    
+    } else if(jam == 17) {
         modulPakan();
     }
     // KONDISI MODUL PAKAN
