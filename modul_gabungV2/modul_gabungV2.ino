@@ -56,7 +56,6 @@ void setup() {
 
     //Atur Waktu
     rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
-    //  rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
     // rtc ds3231
 
     //  setup relay
@@ -132,24 +131,24 @@ void loop() {
     // KONDISI MODUL MINUM
 
     // KONDISI MODUL PAKAN
-    if(jam == 7 && menit == 0 && detik == 0) {
+    if(jam == 7) {
         modulPakan();
     }
 
-    if(jam == 12 && menit == 0 && detik == 0) {
+    if(jam == 12) {
         modulPakan();
     }
 
-    if(jam == 17 && menit == 0 && detik == 0) {
+    if(jam == 17) {
         modulPakan();
     }
     // KONDISI MODUL PAKAN
 
     // KONDISI MODUL MODE MALAM
-    if (jam == 7 && menit == 0 && detik == 0) {
+    if (jam == 7) {
         matikanModulModeMalam();
     
-    } else if (jam == 17 && menit == 0 && detik == 0) {
+    } else if (jam == 21) {
         modulModeMalam();
     }
     // KONDISI MODUL MODE MALAM
@@ -161,14 +160,13 @@ void loop() {
 
 // MODUL PAKAN
 void modulPakan() {
-    // proses perputaran pakan secara halus
+    // proses perputaran servo
     for (int posisi = 0; posisi <= 180; posisi++) {
-        // set posisi servo berdasarkan variabel posisi
         servoku.write(posisi);
         delay(10);
     }
 
-    // proses perputaran tempat pakan kembali ke posisi awal
+    // proses perputaran servo kembali ke posisi awal
     for (int posisi = 180; posisi >= 0; posisi--) {
         servoku.write(posisi);
         delay(10);
