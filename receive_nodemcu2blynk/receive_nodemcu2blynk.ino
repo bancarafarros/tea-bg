@@ -20,7 +20,7 @@ char pass[] = "12345678";
 BlynkTimer timer;
 
 String dataIn;
-String dt[8];
+String dt[9];
 int i;
 boolean parsing = false;
 
@@ -107,7 +107,8 @@ void sendSensor(){
   Blynk.virtualWrite(V4, dt[4].toInt()); // statusKipasSuhu
   Blynk.virtualWrite(V5, dt[5].toInt()); // statusKipasKelembaban
   Blynk.virtualWrite(V6, dt[6].toInt()); // statusPompa
-  Blynk.virtualWrite(V7, dt[7].toInt()); // statusLampu
+  Blynk.virtualWrite(V7, dt[7].toInt()); // statusLampuSuhu
+  Blynk.virtualWrite(V8, dt[8].toInt()); // statusLampuMalam
 
   // function logEvent untuk mengirimkan notifikasi kepada smartphone
   if(dt[3] == "7:0:0"){

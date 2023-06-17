@@ -22,10 +22,11 @@ int ketinggianAirMm;
 //sensor ketinggian air
 
 // relay
-const int kipas1 = 10; //relay1 suhu
-const int kipas2 = 11; //relay2 kelembaban
-const int pompa = 12; //relay3
-const int lampu = 13; //relay4
+const int kipas1 = 8; //relay1 suhu
+const int kipas2 = 9; //relay2 kelembaban
+const int pompa = 10; //relay3
+const int lampu1 = 11; //relay4
+const int lampu2 = 12; //relay5
 
 //on off relay
 int relayON = LOW; //relay nyala
@@ -35,7 +36,8 @@ int relayOFF = HIGH; //relay mati
 bool statusKipasSuhu;
 bool statusKipasKelembaban;
 bool statusPompa;
-bool statusLampu;
+bool statusLampuSuhu;
+bool statusLampuMalam;
 // relay
 
 void setup() {
@@ -62,11 +64,13 @@ void setup() {
     pinMode(kipas1, OUTPUT);
     pinMode(kipas2, OUTPUT);
     pinMode(pompa, OUTPUT);
-    pinMode(lampu, OUTPUT);
+    pinMode(lampu1, OUTPUT);
+    pinMode(lampu2, OUTPUT);
     digitalWrite(kipas1, relayOFF);
     digitalWrite(kipas2, relayOFF);
     digitalWrite(pompa, relayOFF);
-    digitalWrite(lampu, relayOFF);
+    digitalWrite(lampu1, relayOFF);
+    digitalWrite(lampu2, relayOFF);
 }
 
 void loop() {
@@ -141,14 +145,14 @@ void loop() {
     }
     // KONDISI MODUL PAKAN
 
-//    // KONDISI MODUL MODE MALAM
-//    if (jam >= 7 && jam <= 17) {
-//        matikanModulModeMalam();
-//    
-//    } else if (jam >= 17 || jam <= 7) {
-//        modulModeMalam();
-//    }
-//    // KONDISI MODUL MODE MALAM
+   // KONDISI MODUL MODE MALAM
+    if (jam >= 7 && jam <= 17) {
+        matikanModulModeMalam();
+
+    } else if (jam >= 17 || jam <= 7) {
+        modulModeMalam();
+    }
+   // KONDISI MODUL MODE MALAM
 
     // KIRIM DATA KE NODEMCU
     modulKirimData();
@@ -208,15 +212,15 @@ void matikanModulIsiBakMinum() {
 void modulPeningkatanSuhu() {
     //meningkatkan suhu kandang ketika suhu di bawah normal dengan menyalakan lampu
     //relay4
-    digitalWrite(lampu, relayON);
-    statusLampu = HIGH;
+    digitalWrite(lampu1, relayON);
+    statusLampuSuhu = HIGH;
 }
 
 void matikanModulPeningkatanSuhu() {
     //mematikan modul peningkatan suhu ketika suhu normal tercapai dengan mematikan lampu
     //relay4
-    digitalWrite(lampu, relayOFF);
-    statusLampu = LOW;
+    digitalWrite(lampu1, relayOFF);
+    statusLampuSuhu = LOW;
 }
 
 void modulPenurunanSuhu() {
@@ -250,33 +254,33 @@ void matikanModulPeningkatanKelembaban() {
 void modulPenurunanKelembaban() {
     //menurunkan kelembaban kandang ketika kelembaban di atas normal dengan menyalakan lampu
     //relay4
-    digitalWrite(lampu, relayON);
-    statusLampu = HIGH;
+    digitalWrite(lampu1, relayON);
+    statusLampuSuhu = HIGH;
 }
 
 void matikanModulPenurunanKelembaban() {
     //mematikan modul penurunan kelembaban ketika kelembaban normal tercapai dengan mematikan lampu
     //relay4
-    digitalWrite(lampu, relayOFF);
-    statusLampu = LOW;
+    digitalWrite(lampu1, relayOFF);
+    statusLampuSuhu = LOW;
 }
 // MODUL MONITORING SUHU DAN KELEMBABAN
 
-//// MODUL MODE MALAM
-//void modulModeMalam() {
-//    // menyalakan lampu kandang ketika waktu sudah memasuki malam hari
-//    //relay4
-//    digitalWrite(lampu, relayON);
-//    statusLampu = HIGH;
-//}
-//
-//void matikanModulModeMalam() {
-//    // mematikan lampu kandang ketika waktu sudah memasuki pagi hari
-//    //relay4
-//    digitalWrite(lampu, relayOFF);
-//    statusLampu = LOW;
-//}
-//// MODUL MODE MALAM
+// MODUL MODE MALAM
+void modulModeMalam() {
+    // menyalakan lampu kandang ketika waktu sudah memasuki malam hari
+    //relay4
+    digitalWrite(lampu2, relayON);
+    statusLampuMalam = HIGH;
+}
+
+void matikanModulModeMalam() {
+    // mematikan lampu kandang ketika waktu sudah memasuki pagi hari
+    //relay4
+    digitalWrite(lampu2, relayOFF);
+    statusLampuMalam = LOW;
+}
+// MODUL MODE MALAM
 
 // MODUL KIRIM DATA
 void modulKirimData() {
@@ -292,7 +296,7 @@ void modulKirimData() {
 
     // Cek apakah sudah mencapai interval waktu tertentu
     if (currentMillis - previousMillis >= interval) {
-        String dataKirim = "#" + String(ketinggianAirMm) + "#" + String(suhu) + "#" + String(kelembaban) + "#" + String(String() + jam + ":" + menit + ":" + detik) + "#" + String(statusKipasSuhu) + "#" + String(statusKipasKelembaban) + "#" + String(statusPompa) + "#" + String(statusLampu);
+        String dataKirim = "#" + String(ketinggianAirMm) + "#" + String(suhu) + "#" + String(kelembaban) + "#" + String(String() + jam + ":" + menit + ":" + detik) + "#" + String(statusKipasSuhu) + "#" + String(statusKipasKelembaban) + "#" + String(statusPompa) + "#" + String(statusLampuSuhu) + "#" + String(statusLampuMalam);
         Serial.println(dataKirim);
         previousMillis = currentMillis;  // menyimpan waktu saat ini sebagai waktu sebelumnya
     }
