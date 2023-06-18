@@ -134,13 +134,15 @@ void loop() {
     // KONDISI MODUL MINUM
 
     // KONDISI MODUL PAKAN
-    if(jam == 7) {
+    if(jam == 7 && menit == 0 && detik == 0) {
         modulPakan();
+    }
     
-    } else if(jam == 12) {
+    if(jam == 12 && menit == 0 && detik == 0) {
         modulPakan();
+    }
     
-    } else if(jam == 17) {
+    if(jam == 17 && menit == 0 && detik == 0) {
         modulPakan();
     }
     // KONDISI MODUL PAKAN
