@@ -5,10 +5,11 @@ int ketinggianAir;
 int ketinggianAirMm;
 
 //relay
-const int kipas1 = 10; //relay1 suhu
-const int kipas2 = 11; //relay2 kelembaban
-const int pompa = 12; //relay3
-const int lampu = 13; //relay4
+const int kipas1 = 8; //relay1 suhu
+const int kipas2 = 9; //relay2 kelembaban
+const int pompa = 10; //relay3
+const int lampu1 = 11; //relay4
+const int lampu2 = 12; //relay5
 
 //on off relay
 int relayON = LOW; //relay nyala
@@ -21,32 +22,28 @@ void setup() {
     pinMode(kipas1, OUTPUT);
     pinMode(kipas2, OUTPUT);
     pinMode(pompa, OUTPUT);
-    pinMode(lampu, OUTPUT);
+    pinMode(lampu1, OUTPUT);
+    pinMode(lampu2, OUTPUT);
     digitalWrite(kipas1, relayOFF);
     digitalWrite(kipas2, relayOFF);
     digitalWrite(pompa, relayOFF);
-    digitalWrite(lampu, relayOFF);
+    digitalWrite(lampu1, relayOFF);
+    digitalWrite(lampu2, relayOFF);
 }
 
 void loop() {
     ketinggianAir = analogRead(analogPin);
     ketinggianAirMm = map(ketinggianAir, 0, 1023, 0, 255);
 
-    // // kondisi real
-    //  if (ketinggianAir < 30) {
-    //    modulIsiBakMinum();
-
-    //  } else if (ketinggianAir > 60) {
-    //    matikanModulIsiBakMinum();
-    //  }
-
     // kondisi coba2
-    if (ketinggianAirMm < 30) {
+    if (ketinggianAirMm < 39) {
         modulIsiBakMinum();
 
-    } else if (ketinggianAirMm > 60) {
+    } else if (ketinggianAirMm > 40) {
         matikanModulIsiBakMinum();
     }
+
+    Serial.println(ketinggianAirMm);
 }
 
 void modulIsiBakMinum() {
