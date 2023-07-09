@@ -112,6 +112,7 @@ void loop() {
     
     //  kelembaban normal
     if (kelembaban >= 50 && kelembaban <= 70) {
+        matikanModulPeningkatanKelembaban();
         matikanModulPenurunanKelembaban();
 
     //  kelembaban di bawah standar minimum
@@ -134,16 +135,28 @@ void loop() {
     // KONDISI MODUL MINUM
 
     // KONDISI MODUL PAKAN
-    if(jam == 7 && menit == 0 && detik == 0) {
-        modulPakan();
+    if(jam == 15 && menit == 37 && detik == 0) {
+        modulPakan(); 
     }
-    
-    if(jam == 12 && menit == 0 && detik == 0) {
-        modulPakan();
+
+    if(jam == 15 && menit == 37 && detik == 10) {
+        modulPakan(); 
     }
-    
-    if(jam == 17 && menit == 0 && detik == 0) {
-        modulPakan();
+
+    if(jam == 15 && menit == 37 && detik == 20) {
+        modulPakan(); 
+    }
+
+    if(jam == 15 && menit == 37 && detik == 30) {
+        modulPakan(); 
+    }
+
+    if(jam == 15 && menit == 37 && detik == 40) {
+        modulPakan(); 
+    }
+
+    if(jam == 15 && menit == 37 && detik == 50) {
+        modulPakan(); 
     }
     // KONDISI MODUL PAKAN
 
@@ -167,7 +180,7 @@ void modulPakan() {
     const unsigned long interval = 10;  // interval waktu dalam milidetik (0.01 detik)
     int posisi = 0;  // posisi awal servo
 
-    while (posisi <= 180) {
+    while (posisi <= 160) {
         unsigned long currentMillis = millis();  // mendapatkan waktu saat ini
 
         // Cek apakah sudah mencapai interval waktu tertentu
