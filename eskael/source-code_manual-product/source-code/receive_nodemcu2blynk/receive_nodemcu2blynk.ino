@@ -10,12 +10,12 @@
 
 char auth[] = BLYNK_AUTH_TOKEN;
 
-char ssid[] = "RINJANI01";
-char pass[] = "12345678";
+//char ssid[] = "RINJANI01";
+//char pass[] = "12345678";
 //char ssid[] = "bringthaton";
 //char pass[] = "12345666";
-//char ssid[] = "Hotspot Area";
-//char pass[] = "sekolahvokasimadiun";
+char ssid[] = "Hotspot Area";
+char pass[] = "sekolahvokasimadiun";
 
 BlynkTimer timer;
 
@@ -109,16 +109,5 @@ void sendSensor(){
   Blynk.virtualWrite(V6, dt[6].toInt()); // statusPompa
   Blynk.virtualWrite(V7, dt[7].toInt()); // statusLampuSuhu
   Blynk.virtualWrite(V8, dt[8].toInt()); // statusLampuMalam
-
-  // function logEvent untuk mengirimkan notifikasi kepada smartphone
-  if(dt[3] == "7:0:0"){
-    Blynk.logEvent("status_pakan","Pakan sudah diberikan pada jam 7");
-
-  } else if(dt[3] == "12:0:0"){
-    Blynk.logEvent("status_pakan","Pakan sudah diberikan pada jam 12");
-
-  } else if(dt[3] == "17:0:0"){
-    Blynk.logEvent("status_pakan","Pakan sudah diberikan pada jam 17");
-  }
 }
 // MODUL KIRIM DATA KE BLYNK
